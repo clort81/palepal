@@ -4,7 +4,7 @@ A lightweight, dependency-free 3D color palette viewer for Linux.
 
 PalePal allows you to visualize GIMP Palettes (`.gpl` files) in an interactive 3D unit box. It supports multiple color spaces (RGB, HSV, CIELAB, Oklab) to help you understand the distribution, gamut, and relationships of colors in your palettes.
 
-<img src="palepal.gif" alt="PalePal Visualization" width="600">
+<img src="palepal.gif" alt="PalePal Visualization" width="800">
 
 ## Features
 
@@ -65,6 +65,9 @@ This state file preserves:
 *   Zoom level
 *   Dot scaling factor
 *   2D Screen scale factor
+
+Sample palette:
+<img src="3DTin-ansi-cap.png" alt="ANSI Colorized Palettes" width="665">
 
 ## License
 
