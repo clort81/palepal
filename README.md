@@ -66,10 +66,9 @@ This state file preserves:
 *   Dot scaling factor
 *   2D Screen scale factor
 
+## Sample ANSI colorized GIMP .gpl palette file:
 
 <img src="3DTin-ansi-cap.png" alt="ANSI Colorized Palettes" width="665">
-
-Sample ANSI colorized GIMP .gpl palette file:
 
 ## License
 
