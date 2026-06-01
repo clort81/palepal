@@ -327,7 +327,7 @@ class PaletteViewer3D:
     def __init__(self, root):
         self.root = root
         self.root.title("PalePal")
-        self.root.geometry("800x600")
+        self.root.geometry("800x720")
         
         # Load State
         state = load_state()
@@ -517,19 +517,29 @@ class PaletteViewer3D:
         self.mode_var.set(value)
         self.save_prefs()
         
+        # Recalculate Current Palette
         new_points = []
         for p in self.colors:
-            r, g, b, name = p.color_info
+            # p is a tuple: (x, y, z, (r, g, b, name))
+            # We unpack it to get the raw RGB values
+            _, _, _, info = p
+            r, g, b, name = info
+            
+            # Get new coordinates for the new color space
             x, y, z = ColorConverter.get_coords(self.colorspace, r, g, b)
-            new_points.append((x, y, z, p.color_info))
+            new_points.append((x, y, z, info))
+            
         self.colors = new_points
         
-        new_prev_points = []
-        for p in self.prev_colors:
-            r, g, b, name = p.color_info
-            x, y, z = ColorConverter.get_coords(self.colorspace, r, g, b)
-            new_prev_points.append((x, y, z, p.color_info))
-        self.prev_colors = new_prev_points
+        # Recalculate Previous Palette (if it exists)
+        if self.prev_colors:
+            new_prev_points = []
+            for p in self.prev_colors:
+                _, _, _, info = p
+                r, g, b, name = info
+                x, y, z = ColorConverter.get_coords(self.colorspace, r, g, b)
+                new_prev_points.append((x, y, z, info))
+            self.prev_colors = new_prev_points
         
         self.update_canvas()
 
